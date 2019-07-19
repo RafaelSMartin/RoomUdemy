@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.ProfessorLenguagesActivity">
+
+    <EditText
+        android:hint="Profesor Id"
+        android:id="@+id/professorLanguageActivityEtProfesorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Lenguaje Id"
+        android:id="@+id/professorLanguageActivityEtLenguajeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Salvar"
+        android:id="@+id/professorLanguageActivityBtSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Leer Profesores (Lenguaje Id)"
+        android:id="@+id/professorLanguageActivityBtLeerProfesores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Leer Lenguajes (Profesor Id)"
+        android:id="@+id/professorLanguageActivityBtLeerLenguajes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
