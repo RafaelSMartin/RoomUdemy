@@ -69,4 +69,14 @@ public class Course {
     public void setProfessorId(int professorId) {
         this.professorId = professorId;
     }
+
+    @Override
+    public String toString() {
+        return "\n" + "Course{" + "\n" +
+                "\t" + "id=" + id + "," + "\n" +
+                "\t" + "name='" + name + '\'' + "," + "\n" +
+                "\t" + "duration='" + duration + '\'' + "," + "\n" +
+                "\t" + "professorId=" + professorId + "\n" +
+                '}';
+    }
 }

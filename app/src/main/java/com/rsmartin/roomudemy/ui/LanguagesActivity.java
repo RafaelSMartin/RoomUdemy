@@ -7,10 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.rsmartin.roomudemy.R;
 import com.rsmartin.roomudemy.db.database.AppDB;
 import com.rsmartin.roomudemy.db.entity.Language;
+import com.rsmartin.roomudemy.db.entity.Professor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +51,8 @@ public class LanguagesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 languageList = AppDB.getAppDB(getApplicationContext()).languageDAO().findAllLanguages();
-                for(Language aux : languageList){
-                    Log.d("TAG", "id: " + aux.getId() + " Name: " + aux.getName() +"\n");
-                }
+
+                showLanguage(languageList);
             }
         });
         btActualizar = findViewById(R.id.languageActivityBtActualizarCursosPorId);
@@ -61,6 +62,8 @@ public class LanguagesActivity extends AppCompatActivity {
                 language.setId(1);
                 language.setName("Java 8");
                 AppDB.getAppDB(getApplicationContext()).languageDAO().updateLanguageById(language);
+
+                showLanguageUnit(language);
             }
         });
         btBorrar = findViewById(R.id.languageActivityBtBorrarCursosPorId);
@@ -71,5 +74,25 @@ public class LanguagesActivity extends AppCompatActivity {
                 AppDB.getAppDB(getApplicationContext()).languageDAO().deleteLanguageById(language);
             }
         });
+    }
+
+    private void showLanguage(List<Language> languages){
+        TextView tv = findViewById(R.id.result);
+        String aux = "";
+
+        for(Language language : languages){
+            Log.d("TAG", "id: " + language.getId() + " Name: " + language.getName() +"\n");
+            aux += language.toString();
+            tv.setText(aux);
+        }
+    }
+
+    private void showLanguageUnit(Language language){
+        TextView tv = findViewById(R.id.result);
+        String aux = "";
+
+        Log.d("TAG", "id: " + language.getId() + " Name: " + language.getName() +"\n");
+        aux = language.toString();
+        tv.setText(aux);
     }
 }

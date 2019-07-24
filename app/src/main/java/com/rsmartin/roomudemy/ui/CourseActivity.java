@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.rsmartin.roomudemy.R;
 import com.rsmartin.roomudemy.db.database.AppDB;
@@ -54,9 +55,8 @@ public class CourseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 courses = AppDB.getAppDB(getApplicationContext()).courseDAO().findCoursesForProfessor(Integer.parseInt(etIdProfesor.getText().toString()));
-                for(Course course : courses) {
-                    Log.d("TAG", "id: " + course.getId() + " Nombre: " + course.getName() + " Duration: " + course.getDuration() + " IdProfesor: " + course.getProfessorId());
-                }
+
+                showResult(courses);
             }
         });
 
@@ -70,6 +70,8 @@ public class CourseActivity extends AppCompatActivity {
                 course.setProfessorId(5);
 
                 AppDB.getAppDB(getApplicationContext()).courseDAO().updateCourseById(course);
+
+                showResultUnit(course);
             }
         });
 
@@ -82,5 +84,25 @@ public class CourseActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showResultUnit(Course course){
+        TextView tv = findViewById(R.id.result);
+        String aux = "";
+
+        Log.d("TAG", "id: " + course.getId() + " Nombre: " + course.getName() + " Duration: " + course.getDuration() + " IdProfesor: " + course.getProfessorId());
+        aux = course.toString();
+        tv.setText(aux);
+    }
+
+    private void showResult(List<Course> courses){
+        TextView tv = findViewById(R.id.result);
+        String aux = "";
+
+        for(Course course : courses) {
+            Log.d("TAG", "id: " + course.getId() + " Nombre: " + course.getName() + " Duration: " + course.getDuration() + " IdProfesor: " + course.getProfessorId());
+            aux += course.toString();
+            tv.setText(aux);
+        }
     }
 }
